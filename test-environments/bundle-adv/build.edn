@@ -4,4 +4,5 @@
  :output-dir "target/bundle-adv/resources/public/js/out"
  ; :pseudo-names true
  :elide-asserts true
- :target :bundle}
+ :target :bundle
+ :closure-defines {cljs.core/*global* "window"}}

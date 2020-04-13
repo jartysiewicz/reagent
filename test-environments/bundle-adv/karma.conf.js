@@ -13,18 +13,8 @@ module.exports = function (config) {
             args: ['reagenttest.runtests.karma_tests'],
         },
         singleRun: true,
-        // TODO: Cljs will get option to control global object?
-        // webpack: {}
         webpack: {
-            mode: 'production',
-            module: {
-                rules: [
-                    {
-                        test: /js\/out\/karma\.js$/,
-                        use: 'imports-loader?this=>window'
-                    }
-                ]
-            }
+            mode: 'production'
         }
     });
 };
