@@ -1167,7 +1167,7 @@
   (when r/is-client
     (testing "When DOM is available, all named entities can be unescaped"
       (is (= "<i> </i>"
-             (rstr [:i (gstr/unescapeEntitiesWithDocument "&nbsp;" js/window.document)]))))))
+             (rstr [:i (gstr/unescapeEntities "&nbsp;")]))))))
 
 (defn context-wrapper []
   (r/create-class

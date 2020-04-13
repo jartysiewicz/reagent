@@ -59,15 +59,9 @@
 ;; Macro which sets *main-cli-fn*
 (doo/doo-all-tests #"(reagenttest\.test.*|reagent\..*-test)")
 
-(defn karma-tests [karma]
+(defn ^:export karma-tests [karma]
   (karma/run-all-tests karma #"(reagenttest\.test.*|reagent\..*-test)"))
 
-;; ^:export doesn't work in advanced optimized bundle,
-;; it is exported to goog.global but webpack doesn't make that
-;; global so Karma doesn't see that. Using window directly
-;; works.
 (when (exists? js/window)
-  (set! (.-karmaTests js/window) karma-tests)
-
   (when-let [f (some-> js/window .-__karma__ .-loaded_real)]
     (.loaded_real (.-__karma__ js/window))))
